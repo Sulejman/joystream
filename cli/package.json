@@ -10,8 +10,8 @@
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.6",
     "@ffprobe-installer/ffprobe": "^1.1.0",
-    "@joystream/types": "^0.15.0",
     "@joystream/cd-schemas": "^0.1.0",
+    "@joystream/types": "^0.15.0",
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.14.0",
     "@oclif/plugin-autocomplete": "^0.2.0",
@@ -52,11 +52,11 @@
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.1.0",
     "globby": "^10.0.2",
+    "json-schema-to-typescript": "^9.1.1",
     "mocha": "^5.2.0",
     "nyc": "^14.1.1",
     "ts-node": "^8.8.2",
-    "typescript": "^3.8.3",
-    "json-schema-to-typescript": "^9.1.1"
+    "typescript": "^3.8.3"
   },
   "engines": {
     "node": ">=12.18.0",

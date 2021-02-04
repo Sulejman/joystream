@@ -1,14 +1,17 @@
-import BN from 'bn.js'
-import { ElectionStage, Seat } from '@joystream/types/council'
-import { Option } from '@polkadot/types'
+// import BN from 'bn.js'
+// import { ElectionStage, Seat } from '@joystream/types/council'
+// import { Option } from '@polkadot/types'
 import { Codec } from '@polkadot/types/types'
-import { BlockNumber, Balance, AccountId } from '@polkadot/types/interfaces'
+// import { BlockNumber, Balance, AccountId } from '@polkadot/types/interfaces'
+import { Balance, AccountId } from '@polkadot/types/interfaces'
 import { DeriveBalancesAll } from '@polkadot/api-derive/types'
 import { KeyringPair } from '@polkadot/keyring/types'
-import { WorkerId, OpeningType } from '@joystream/types/working-group'
-import { Membership, MemberId } from '@joystream/types/members'
-import { Opening, StakingPolicy, ApplicationStageKeys } from '@joystream/types/hiring'
+// import { WorkerId, OpeningType } from '@joystream/types/working-group'
+import { WorkerId } from '@joystream/types/working-group'
+import { Membership } from '@joystream/types/members'
+// import { Opening, StakingPolicy, ApplicationStageKeys } from '@joystream/types/hiring'
 import { Validator } from 'inquirer'
+import { MemberId } from '@joystream/types/common'
 
 // KeyringPair type extended with mandatory "meta.name"
 // It's used for accounts/keys management within CLI.
@@ -26,41 +29,41 @@ export type AccountSummary = {
 
 // This function allows us to easily transform the tuple into the object
 // and simplifies the creation of consitent Object and Tuple types (seen below).
-export function createCouncilInfoObj(
-  activeCouncil: Seat[],
-  termEndsAt: BlockNumber,
-  autoStart: boolean,
-  newTermDuration: BN,
-  candidacyLimit: BN,
-  councilSize: BN,
-  minCouncilStake: Balance,
-  minVotingStake: Balance,
-  announcingPeriod: BlockNumber,
-  votingPeriod: BlockNumber,
-  revealingPeriod: BlockNumber,
-  round: BN,
-  stage: Option<ElectionStage>
-) {
-  return {
-    activeCouncil,
-    termEndsAt,
-    autoStart,
-    newTermDuration,
-    candidacyLimit,
-    councilSize,
-    minCouncilStake,
-    minVotingStake,
-    announcingPeriod,
-    votingPeriod,
-    revealingPeriod,
-    round,
-    stage,
-  }
-}
+// export function createCouncilInfoObj(
+//   activeCouncil: Seat[],
+//   termEndsAt: BlockNumber,
+//   autoStart: boolean,
+//   newTermDuration: BN,
+//   candidacyLimit: BN,
+//   councilSize: BN,
+//   minCouncilStake: Balance,
+//   minVotingStake: Balance,
+//   announcingPeriod: BlockNumber,
+//   votingPeriod: BlockNumber,
+//   revealingPeriod: BlockNumber,
+//   round: BN,
+//   stage: Option<ElectionStage>
+// ) {
+//   return {
+//     activeCouncil,
+//     termEndsAt,
+//     autoStart,
+//     newTermDuration,
+//     candidacyLimit,
+//     councilSize,
+//     minCouncilStake,
+//     minVotingStake,
+//     announcingPeriod,
+//     votingPeriod,
+//     revealingPeriod,
+//     round,
+//     stage,
+//   }
+// }
 // Object/Tuple containing council/councilElection information (council:info).
 // The tuple is useful, because that's how api.queryMulti returns the results.
-export type CouncilInfoTuple = Parameters<typeof createCouncilInfoObj>
-export type CouncilInfoObj = ReturnType<typeof createCouncilInfoObj>
+// export type CouncilInfoTuple = Parameters<typeof createCouncilInfoObj>
+// export type CouncilInfoObj = ReturnType<typeof createCouncilInfoObj>
 
 // Object with "name" and "value" properties, used for rendering simple CLI tables like:
 // Total balance:   100 JOY
@@ -96,19 +99,19 @@ export type GroupMember = {
   reward?: Reward
 }
 
-export type GroupApplication = {
-  wgApplicationId: number
-  applicationId: number
-  wgOpeningId: number
-  member: Membership | null
-  roleAccout: AccountId
-  stakes: {
-    application: number
-    role: number
-  }
-  humanReadableText: string
-  stage: ApplicationStageKeys
-}
+// export type GroupApplication = {
+//   wgApplicationId: number
+//   applicationId: number
+//   wgOpeningId: number
+//   member: Membership | null
+//   roleAccout: AccountId
+//   stakes: {
+//     application: number
+//     role: number
+//   }
+//   humanReadableText: string
+//   stage: ApplicationStageKeys
+// }
 
 export enum OpeningStatus {
   WaitingToBegin = 'WaitingToBegin',
@@ -125,10 +128,10 @@ export type GroupOpeningStage = {
   date?: Date
 }
 
-export type GroupOpeningStakes = {
-  application?: StakingPolicy
-  role?: StakingPolicy
-}
+// export type GroupOpeningStakes = {
+//   application?: StakingPolicy
+//   role?: StakingPolicy
+// }
 
 export const stakingPolicyUnstakingPeriodKeys = [
   'crowded_out_unstaking_period_length',
@@ -159,16 +162,16 @@ export type UnstakingPeriods = {
   [k in UnstakingPeriodsKey]: number
 }
 
-export type GroupOpening = {
-  wgOpeningId: number
-  openingId: number
-  stage: GroupOpeningStage
-  opening: Opening
-  stakes: GroupOpeningStakes
-  applications: GroupApplication[]
-  type: OpeningType
-  unstakingPeriods: UnstakingPeriods
-}
+// export type GroupOpening = {
+//   wgOpeningId: number
+//   openingId: number
+//   stage: GroupOpeningStage
+//   opening: Opening
+//   stakes: GroupOpeningStakes
+//   applications: GroupApplication[]
+//   type: OpeningType
+//   unstakingPeriods: UnstakingPeriods
+// }
 
 // Api-related
 
